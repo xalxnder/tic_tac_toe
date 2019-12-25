@@ -1,7 +1,8 @@
 
 # Tic Tac Toe for the Command Line
 # Author: Xavier Alexander
-import os
+
+# The welcome screen/message
 print("Controls:")
 print(f"Top Left - TL\t\t Top Middle - TM \t Top Right - TR")
 print(f"Middle Left - ML\t Middle Middle - MM\t Middle Right - MR")
@@ -15,6 +16,7 @@ moves = 0
 game_on = True
 
 
+# Using a dictionary to represent the game board
 board = {'TL': ' ', 'TM': ' ', 'TR': ' ',
          'ML': ' ', 'MM': ' ', 'MR': ' ',
          'BL': ' ', 'BM': ' ', 'BR': ' ',
@@ -22,6 +24,7 @@ board = {'TL': ' ', 'TM': ' ', 'TR': ' ',
 
 
 def print_board(board):
+    # Function that prints the board to the screen
     print(f"{board['TL']} | {board['TM']} | {board['TR']}")
     print('--+---+--')
     print(
@@ -32,11 +35,13 @@ def print_board(board):
 
 
 def make_move(position, letter):
+    # Function that allows players to make moves.
     board[position] = letter
     print_board(board)
 
 
 def Player1_win():
+    # Possible moves Player 1 could make that would result in a win.
     if board['TL'] == 'O' and board['ML'] == 'O' and board['BL'] == 'O' or \
             board['TL'] == 'O' and board['TM'] == 'O' and board['TR'] == 'O' or \
             board['TM'] == 'O' and board['MM'] == 'O' and board['BM'] == 'O' or \
@@ -49,6 +54,7 @@ def Player1_win():
 
 
 def Player2_win():
+    # Possible moves Player 2 could make that would result in a win.
     if board['TL'] == 'X' and board['ML'] == 'X' and board['BL'] == 'X' or \
             board['TL'] == 'X' and board['TM'] == 'X' and board['TR'] == 'X' or \
             board['TM'] == 'X' and board['MM'] == 'X' and board['BM'] == 'X' or \
@@ -58,20 +64,6 @@ def Player2_win():
             board['TR'] == 'X' and board['MM'] == 'X' and board['BL'] == 'X' or \
             board['BL'] == 'X' and board['BM'] == 'X' and board['BR'] == 'X':
         return True
-
-
-# def check_game():
-#     while True:
-#         if Player1_win():
-#             print('Player 1, you win')
-#             break
-#             # global game_on
-#             # game_on = False
-#         elif Player2_win():
-#             print('Player 2, you win')
-#             break
-#             # game_on = False
-#         return game_on
 
 
 while game_on:
