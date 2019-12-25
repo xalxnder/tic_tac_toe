@@ -69,7 +69,6 @@ def Player2_win():
 while game_on:
     Player1_pos = input(
         'Player 1, where do you want to make your move? ').upper()
-    # os.system('cls' if os.name == 'nt' else 'clear')
     make_move(Player1_pos, Player1_letter)
     if Player1_win():
         print('Player 1, you win!')
@@ -84,5 +83,3 @@ else:
     print("Game over")
 
 print(game_on)
-
-# It looks like the global variable game_on is not changing to False 🤔
