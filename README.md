@@ -1,5 +1,5 @@
 # Tic-Tac-Toe
-A command line version of tic-tac-toe, written in Python.
+In my learning python journey, I thought it would be a fun challenge to create a command line version of Tic Tac Toe. Will anybody ever play this? Probably not :). 
 
 ### To-Do 
 
