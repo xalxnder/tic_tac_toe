@@ -4,4 +4,5 @@ In my learning python journey, I thought it would be a fun challenge to create a
 ### To-Do 
 
 []- Add functionality to check for a DRAW.
+
 []- Check if user's input is equal to one of the possible moves. 
