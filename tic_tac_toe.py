@@ -1,4 +1,3 @@
-
 # Tic Tac Toe for the Command Line
 # Author: Xavier Alexander
 
@@ -12,7 +11,6 @@ print(f"Player 2 = X")
 
 Player1_letter = 'O'
 Player2_letter = 'X'
-moves = 0
 game_on = True
 
 
@@ -41,6 +39,8 @@ def make_move(position, letter):
 
 
 def Player1_win():
+    Player1_pos = input('Player 1, where do you want to make your move? ').upper()
+    make_move(Player1_pos, Player1_letter)
     # Possible moves Player 1 could make that would result in a win.
     if board['TL'] == 'O' and board['ML'] == 'O' and board['BL'] == 'O' or \
             board['TL'] == 'O' and board['TM'] == 'O' and board['TR'] == 'O' or \
@@ -50,10 +50,14 @@ def Player1_win():
             board['ML'] == 'O' and board['MM'] == 'O' and board['MR'] == 'O' or \
             board['TR'] == 'O' and board['MM'] == 'O' and board['BL'] == 'O' or \
             board['BL'] == 'O' and board['BM'] == 'O' and board['BR'] == 'O':
+        print('Player 1, you win!')
         return True
 
 
 def Player2_win():
+    Player2_pos = input(
+        'Player 2, where do you want to make your move? ').upper()
+    make_move(Player2_pos, Player2_letter)
     # Possible moves Player 2 could make that would result in a win.
     if board['TL'] == 'X' and board['ML'] == 'X' and board['BL'] == 'X' or \
             board['TL'] == 'X' and board['TM'] == 'X' and board['TR'] == 'X' or \
@@ -63,23 +67,12 @@ def Player2_win():
             board['ML'] == 'X' and board['MM'] == 'X' and board['MR'] == 'X' or \
             board['TR'] == 'X' and board['MM'] == 'X' and board['BL'] == 'X' or \
             board['BL'] == 'X' and board['BM'] == 'X' and board['BR'] == 'X':
+        print('Player 2, you win!')
         return True
 
-
 while game_on:
-    Player1_pos = input(
-        'Player 1, where do you want to make your move? ').upper()
-    make_move(Player1_pos, Player1_letter)
-    if Player1_win():
-        print('Player 1, you win!')
-        break
-    Player2_pos = input(
-        'Player 2, where do you want to make your move? ').upper()
-    make_move(Player2_pos, Player2_letter)
-    if Player2_win():
-        print('Player 2, you win!')
+    if Player1_win() or Player2_win():
         break
 else:
-    print("Game over")
+    print("DRAW")
 
-print(game_on)
