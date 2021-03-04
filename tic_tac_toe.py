@@ -46,9 +46,8 @@ def game():
                 board['TR'] == board['MM'] == board['BL'] != ' ' or \
                 board['BL'] == board['BM'] == board['BR'] != ' ':
             print(f'Player {Player_letter}, you win!')
-            restart()
-            return True
-        
+            restart()  
+                  
         if i == 9:
             restart()
             print('DRAW')
