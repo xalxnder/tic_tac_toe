@@ -9,17 +9,11 @@ print(f"Bottom Left - BL\t Bottom Middle - BM\t Bottom Right - BR")
 print(f"Player 1 = O")
 print(f"Player 2 = X")
 
-Player1_letter = 'O'
-Player2_letter = 'X'
-game_on = True
-
-
 # Using a dictionary to represent the game board
 board = {'TL': ' ', 'TM': ' ', 'TR': ' ',
-         'ML': ' ', 'MM': ' ', 'MR': ' ',
-         'BL': ' ', 'BM': ' ', 'BR': ' ',
-         }
-
+        'ML': ' ', 'MM': ' ', 'MR': ' ',
+        'BL': ' ', 'BM': ' ', 'BR': ' ',
+        }
 
 def print_board(board):
     # Function that prints the board to the screen
@@ -31,48 +25,48 @@ def print_board(board):
     print(
         f"{board['BL']} | {board['BM']} | {board['BR']}")
 
-
 def make_move(position, letter):
     # Function that allows players to make moves.
     board[position] = letter
     print_board(board)
 
+def game():
+    Player_letter = 'O'
+    game_on = True
+    round =0
+    for i in range(10):
+        print(i)
+        Player_pos = input(f'Player {Player_letter}, where do you want to make your move? ').upper()
+        make_move(Player_pos, Player_letter)
+        # Possible moves Player 1 could make that would result in a win.
+        if board['TL'] == board['ML'] ==  board['BL'] != ' ' or \
+                board['TL'] == board['TM'] == board['TR'] != ' ' or \
+                board['TM'] == board['MM'] == board['BM'] != ' ' or \
+                board['TR'] == board['MR'] == board['BR'] != ' ' or \
+                board['TL'] == board['MM'] == board['BR'] != ' ' or \
+                board['ML'] == board['MM'] == board['MR'] != ' ' or \
+                board['TR'] == board['MM'] == board['BL'] != ' ' or \
+                board['BL'] == board['BM'] == board['BR'] != ' ':
+            print(f'Player {Player_letter}, you win!')
+            restart()
+            return True
+        
+        if i == 9:
+            restart()
+            print('DRAW')
 
-def Player1_win():
-    Player1_pos = input('Player 1, where do you want to make your move? ').upper()
-    make_move(Player1_pos, Player1_letter)
-    # Possible moves Player 1 could make that would result in a win.
-    if board['TL'] == 'O' and board['ML'] == 'O' and board['BL'] == 'O' or \
-            board['TL'] == 'O' and board['TM'] == 'O' and board['TR'] == 'O' or \
-            board['TM'] == 'O' and board['MM'] == 'O' and board['BM'] == 'O' or \
-            board['TR'] == 'O' and board['MR'] == 'O' and board['BR'] == 'O' or \
-            board['TL'] == 'O' and board['MM'] == 'O' and board['BR'] == 'O' or \
-            board['ML'] == 'O' and board['MM'] == 'O' and board['MR'] == 'O' or \
-            board['TR'] == 'O' and board['MM'] == 'O' and board['BL'] == 'O' or \
-            board['BL'] == 'O' and board['BM'] == 'O' and board['BR'] == 'O':
-        print('Player 1, you win!')
-        return True
+        if Player_letter == 'O':
+            Player_letter = 'X'
+        else:
+            Player_letter = 'O'
+
+def restart():
+    choice = input('Would you like to play again??').lower()
+    if choice == 'y':
+        game()
+    elif choice == 'n':
+        exit()
 
 
-def Player2_win():
-    Player2_pos = input(
-        'Player 2, where do you want to make your move? ').upper()
-    make_move(Player2_pos, Player2_letter)
-    # Possible moves Player 2 could make that would result in a win.
-    if board['TL'] == 'X' and board['ML'] == 'X' and board['BL'] == 'X' or \
-            board['TL'] == 'X' and board['TM'] == 'X' and board['TR'] == 'X' or \
-            board['TM'] == 'X' and board['MM'] == 'X' and board['BM'] == 'X' or \
-            board['TR'] == 'X' and board['MR'] == 'X' and board['BR'] == 'X' or \
-            board['TL'] == 'X' and board['MM'] == 'X' and board['BR'] == 'X' or \
-            board['ML'] == 'X' and board['MM'] == 'X' and board['MR'] == 'X' or \
-            board['TR'] == 'X' and board['MM'] == 'X' and board['BL'] == 'X' or \
-            board['BL'] == 'X' and board['BM'] == 'X' and board['BR'] == 'X':
-        print('Player 2, you win!')
-        return True
-
-while game_on:
-    if Player1_win() or Player2_win():
-        break
-else:
-    print("DRAW")
-
+if __name__ == "__main__":
+    game()
