@@ -32,8 +32,6 @@ def make_move(position, letter):
 
 def game():
     Player_letter = 'O'
-    game_on = True
-    round =0
     for i in range(10):
         print(i)
         Player_pos = input(f'Player {Player_letter}, where do you want to make your move? ').upper()
