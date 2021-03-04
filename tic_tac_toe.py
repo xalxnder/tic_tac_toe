@@ -35,8 +35,9 @@ def game():
     for i in range(10):
         print(i)
         Player_pos = input(f'Player {Player_letter}, where do you want to make your move? ').upper()
-        
+
         while Player_pos not in board:
+            #Check for valid move
             print('Please make a correct move')
             Player_pos = input(f'Player {Player_letter}, where do you want to make your move? ').upper()
 
