@@ -35,6 +35,11 @@ def game():
     for i in range(10):
         print(i)
         Player_pos = input(f'Player {Player_letter}, where do you want to make your move? ').upper()
+        
+        while Player_pos not in board:
+            print('Please make a correct move')
+            Player_pos = input(f'Player {Player_letter}, where do you want to make your move? ').upper()
+
         make_move(Player_pos, Player_letter)
         # Possible moves Player 1 could make that would result in a win.
         if board['TL'] == board['ML'] ==  board['BL'] != ' ' or \
@@ -47,7 +52,7 @@ def game():
                 board['BL'] == board['BM'] == board['BR'] != ' ':
             print(f'Player {Player_letter}, you win!')
             restart()  
-                  
+
         if i == 9:
             restart()
             print('DRAW')
