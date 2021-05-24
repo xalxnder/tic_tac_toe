@@ -1,5 +1,5 @@
 # Tic-Tac-Toe
-In my learning python journey, I thought it would be a fun challenge to create a command line version of Tic Tac Toe. Will anybody ever play this? Probably not :). 
+Tic-Tac-Toe for the command line. 
 
 
 
